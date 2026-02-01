@@ -7,8 +7,12 @@ import {
   Attendance,
   users, staff, students, subjects, timetable, attendance
 } from "@shared/schema";
-import { db } from "./db";
+import { db, pool } from "./db";
 import { eq, and, desc, sql } from "drizzle-orm";
+import connectPgSimple from "connect-pg-simple";
+import session from "express-session";
+
+const PostgresSessionStore = connectPgSimple(session);
 
 export interface IStorage {
   // Users
@@ -39,6 +43,15 @@ export interface IStorage {
 }
 
 export class DatabaseStorage implements IStorage {
+  sessionStore: session.Store;
+
+  constructor() {
+    this.sessionStore = new PostgresSessionStore({
+      pool,
+      createTableIfMissing: true,
+    });
+  }
+
   async getUser(id: number): Promise<User | undefined> {
     const [user] = await db.select().from(users).where(eq(users.id, id));
     return user;
