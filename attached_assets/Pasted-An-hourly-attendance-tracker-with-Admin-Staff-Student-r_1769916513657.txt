@@ -1,0 +1,304 @@
+An hourly attendance tracker with Admin–Staff–Student roles is a real-world, college-level system.
+Below is a complete website idea + structure, explained simply so you can actually build it step by step.
+
+🎓 Attendance Tracker Website (Full Idea)
+4
+🔑 User Roles
+1️⃣ Admin
+
+Controls the entire system
+
+Can update timetable
+
+Can assign staff to subjects
+
+Can define lab hours
+
+Can view reports
+
+2️⃣ Staff (Teacher)
+
+Can mark attendance
+
+Can see assigned classes only
+
+Can mark hour-wise attendance
+
+Can mark lab attendance (2–3 hours together)
+
+3️⃣ Student
+
+Can only view attendance
+
+Cannot edit anything
+
+Can see:
+
+Subject-wise %
+
+Hour-wise attendance
+
+Lab attendance
+
+⏱️ Attendance Structure (7 Periods – Hourly)
+
+Example day:
+
+Period	Time
+1	9:00 – 10:00
+2	10:00 – 11:00
+3	11:00 – 12:00
+4	12:00 – 1:00
+5	2:00 – 3:00
+6	3:00 – 4:00
+7	4:00 – 5:00
+
+Admin can update this anytime.
+
+🧠 Core Concept (VERY IMPORTANT)
+
+👉 Attendance is controlled by timetable + current time
+
+So the website automatically knows:
+
+Which hour is running
+
+Which subject is active
+
+Which staff can mark attendance
+
+This prevents wrong attendance.
+
+🏗️ Website Modules (Full System)
+🟦 1. Authentication Module
+
+(Login System)
+
+Admin login
+
+Staff login
+
+Student login
+
+After login → dashboard changes automatically.
+
+🟥 2. Admin Panel
+Admin Features:
+
+✅ Create users
+
+Add staff
+
+Add students
+
+✅ Create departments
+
+CSE
+
+ECE
+
+MECH
+
+✅ Create subjects
+
+DBMS
+
+OS
+
+CN
+
+Labs
+
+✅ Timetable Management
+
+Day-wise timetable
+
+Period-wise subject
+
+Staff assigned per hour
+
+Example:
+
+Day	Period	Subject	Staff
+Mon	1	DBMS	Mr.Raj
+Mon	2	OS	Ms.Anu
+
+✅ Lab Setup
+
+Lab = 2 or 3 continuous hours
+
+Example: Period 5–7 = DBMS Lab
+
+✅ View attendance reports
+
+Student-wise
+
+Subject-wise
+
+Monthly report
+
+🟩 3. Staff Dashboard
+Staff can see:
+
+Today’s timetable only
+
+Active period highlighted
+
+Attendance button opens only during that hour
+
+Staff Attendance Flow:
+
+Login
+
+Dashboard shows:
+
+Current Period: 3
+Subject: DBMS
+Class: CSE-B
+Time: 11:00 – 12:00
+
+Click Mark Attendance
+
+Student list appears
+
+Mark:
+
+Present
+
+Absent
+
+Submit → locked after time ends
+
+Lab Attendance:
+
+Admin defines lab hours
+
+Staff marks once → system counts 2 or 3 hours automatically
+
+🟨 4. Student Dashboard
+
+Students can:
+
+✅ View subject-wise attendance
+✅ View total hours conducted
+✅ View hours attended
+✅ Attendance percentage auto calculated
+
+Example:
+
+Subject	Attended	Total	%
+DBMS	32	40	80%
+OS	28	35	80%
+DBMS Lab	18	24	75%
+
+🚫 No editing
+🚫 No marking
+
+View only.
+
+🧩 Database Design (Important)
+Tables
+users
+id
+name
+role (admin/staff/student)
+email
+password
+students
+student_id
+department
+year
+section
+staff
+staff_id
+department
+subjects
+subject_id
+name
+is_lab (true/false)
+hours_per_week
+timetable
+day
+period
+subject_id
+staff_id
+start_time
+end_time
+attendance
+date
+period
+subject_id
+student_id
+status (present/absent)
+lab_attendance
+date
+subject_id
+hours_count (2 or 3)
+student_id
+status
+🛠️ Tech Stack (Perfect for You)
+Frontend
+
+HTML
+
+CSS
+
+JavaScript
+
+Later → React
+
+Backend
+
+Node.js
+
+Express.js
+
+Database
+
+SQLite (easy) → later MySQL
+
+Authentication
+
+JWT login
+
+🔁 Real-Time Logic (Smart Part)
+
+The system checks:
+
+Current time → timetable → active subject → allowed staff
+
+So:
+
+❌ Wrong staff cannot mark
+❌ Attendance cannot be edited later
+✅ Fully automated
+
+🚀 Advanced Features (Later)
+
+📊 Attendance charts
+
+🔔 Low attendance alert (<75%)
+
+📩 Email notification
+
+📱 Mobile responsive
+
+📥 Excel export
+
+🔐 Role-based permissions
+
+🎯 Final Outcome
+
+You’ll build a real college-level Attendance Management System:
+
+Hour-wise attendance
+
+7 periods per day
+
+Lab attendance support
+
+Admin-controlled timetable
+
+Secure role-based access
+
+This project is excellent for resumes and placements.
