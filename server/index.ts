@@ -92,7 +92,7 @@ app.use((req, res, next) => {
   // It is the only port that is not firewalled.
   const port = process.env.PORT || 5000;
 
-app.listen(port, () => {
+httpServer.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 })();
